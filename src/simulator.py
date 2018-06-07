@@ -1,0 +1,56 @@
+from pprint import pprint
+
+from deck import get_card_points, get_shuffled_deck
+from PlayerStopAt17 import PlayerStopAt17
+
+PLAYERS = 2
+
+def playGame(croupier, players):
+    deck = get_shuffled_deck()
+
+    croupier_cards = []
+    players_cards = [[] for _ in range(len(players))]
+
+    # initial draw
+    for i, p in enumerate(players):
+        players_cards[i].append(deck.pop())
+        players_cards[i].append(deck.pop())
+
+    croupier_cards.append(deck.pop())
+
+    # play the game
+    for i, p in enumerate(players):
+        player_cards = players_cards[i]
+        others_cards = [cards for cards in enumerate(players_cards) if cards is not player_cards]
+        while p.should_continue(player_cards, croupier_cards, others_cards):
+            player_cards.append(deck.pop())
+
+    while croupier.should_continue(croupier_cards, croupier_cards, others_cards):
+        croupier_cards.append(deck.pop())
+
+    # check wins
+    croupier_wins = 0
+    player_wins = [0] * len(players)
+
+    croupier_points = get_card_points(croupier_cards)
+    for i, player_cards in enumerate(players_cards):
+        player_points = get_card_points(player_cards)
+
+        if player_points >= 0 and croupier_points == player_points: # it's a tie
+            continue
+
+        res = -1 if player_points > croupier_points else 1
+        croupier_wins += res
+        player_wins[i] -= res
+
+
+    pprint(croupier_cards)
+    pprint(players_cards)
+    return croupier_wins, player_wins
+
+
+croupier = PlayerStopAt17()
+players = [PlayerStopAt17() for _ in range(PLAYERS)]
+
+result = playGame(croupier, players)
+pprint(result)
