@@ -6,7 +6,6 @@ def get_shuffled_deck():
     return cartes
 
 
-
 def get_card_points(cards):
     """
     -1: exploded!
@@ -14,12 +13,13 @@ def get_card_points(cards):
     22: 21 points AND it is ACE + figure
     """
 
-    # TODO:
-    #  Needed to distinguishe figures from10
-    # handle ACES
-
     points = sum(cards)
-    if points >= 22:
-        points = -1
+    if points > 21:
+        cards = [c if c != 11 else 1 for c in cards]
+        if points > 21:
+            return -1
+
+    if points == 21 and len(cards) == 2:  # blackjack
+        points = 22
 
     return points

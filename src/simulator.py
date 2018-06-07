@@ -1,9 +1,5 @@
 from pprint import pprint
-
 from deck import get_card_points, get_shuffled_deck
-from PlayerStopAt17 import PlayerStopAt17
-
-PLAYERS = 2
 
 def playGame(croupier, players):
     deck = get_shuffled_deck()
@@ -25,7 +21,7 @@ def playGame(croupier, players):
         while p.should_continue(player_cards, croupier_cards, others_cards):
             player_cards.append(deck.pop())
 
-    while croupier.should_continue(croupier_cards, croupier_cards, others_cards):
+    while croupier.should_continue(croupier_cards, croupier_cards, players_cards):
         croupier_cards.append(deck.pop())
 
     # check wins
@@ -44,13 +40,7 @@ def playGame(croupier, players):
         player_wins[i] -= res
 
 
-    pprint(croupier_cards)
-    pprint(players_cards)
+    # pprint(sum(croupier_cards))
+    # pprint([sum(a) for a in players_cards])
     return croupier_wins, player_wins
 
-
-croupier = PlayerStopAt17()
-players = [PlayerStopAt17() for _ in range(PLAYERS)]
-
-result = playGame(croupier, players)
-pprint(result)

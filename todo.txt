@@ -1,0 +1,25 @@
+Output code:
+Graphs on fait varier (avg 10000 runs):
+ - le nombre de players 1-7
+ - les strategies (meme pour tous les jouers)
+ - outcome per player position
+
+Grpyh1:
+    nb_joueur: [1, 7]
+    val[0, 100%] = fn(strategie, nb_joueur)
+    val = (sum(res[-1])/10000 / 2) + (1/2)
+
+Graph2:
+    Fix: nb_jouerus a 7:
+    val[0, 100%] = fn(strategie, position_joueur)
+    val = (sum(res[i_joueur])/10000 / 2) + (1/2)
+
+Graph2:
+    - on fait varier stopat du player entre 15-19
+    - pour une carte initial du croupier diferente
+
+
+Croupier: toujours la meme strategie stop at 17:
+
+Startegies:
+ - Strategie: compter les cartes (voir strategie online)
