@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Simulate a game with the given strategies
+# Author: Claudio Sousa, David Gonzalez
+#
+
 from pprint import pprint
 from deck import get_card_points, get_shuffled_deck
 
@@ -42,5 +49,4 @@ def playGame(croupier, players):
 
     # pprint(sum(croupier_cards))
     # pprint([sum(a) for a in players_cards])
-    return croupier_wins, player_wins
-
+    return croupier_wins, player_wins, croupier_cards

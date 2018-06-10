@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Simpliest player strategy: get at 16, keep at 17
+# Author: Claudio Sousa, David Gonzalez
+#
+
 from deck import get_card_points
 
 class PlayerStopAt:
@@ -7,3 +14,9 @@ class PlayerStopAt:
     def should_continue(self, cards, croupier_cards, others_cards):
         points = get_card_points(cards)
         return points < self.stop_at and points >=0 # points < 0 => over 21
+
+    def __str__(self):
+        return PlayerStopAt.__name__ + "(" + str(self.stop_at) + ")"
+
+    def __repr__(self):
+        return self.__str__()
