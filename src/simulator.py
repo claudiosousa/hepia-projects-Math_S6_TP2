@@ -25,10 +25,10 @@ def playGame(croupier, players):
     for i, p in enumerate(players):
         player_cards = players_cards[i]
         others_cards = [cards for cards in enumerate(players_cards) if cards is not player_cards]
-        while p.should_continue(player_cards, croupier_cards, others_cards):
+        while get_card_points(player_cards)>=0 and p.should_continue(player_cards, croupier_cards, others_cards):
             player_cards.append(deck.pop())
 
-    while croupier.should_continue(croupier_cards, croupier_cards, players_cards):
+    while get_card_points(croupier_cards)>=0 and croupier.should_continue(croupier_cards, croupier_cards, players_cards):
         croupier_cards.append(deck.pop())
 
     # check wins

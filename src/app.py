@@ -11,19 +11,19 @@ from mpl_toolkits.mplot3d import Axes3D
 from PlayerStopAt import PlayerStopAt
 from simulator import playGame
 
-RUNS = 100
+RUNS = 1000
 PLAYERS = 7
 
 croupier = PlayerStopAt(17)
-strategies = [PlayerStopAt(17)]
+strategies = [PlayerStopAt(15),PlayerStopAt(16), PlayerStopAt(17),PlayerStopAt(18),PlayerStopAt(19)]
 
 # % win for the last player for a variable number of players
 g1_sum_win = [[0] * PLAYERS for _ in strategies]
 
-for r in range(RUNS):
+for _ in range(RUNS):
     for s_i, s in enumerate(strategies):
         for p in range(PLAYERS):
-            c_result, p_result, c_cards = playGame(croupier, [s for _ in range(p+1)])
+            c_result, p_result, c_cards = playGame(croupier, [s] * (p + 1))
             g1_sum_win[s_i][p] += p_result[-1]
 
 pprint(g1_sum_win)
@@ -32,7 +32,7 @@ pprint(g1_sum_win)
 g2_players = [s for _ in range(PLAYERS)]
 g2_sum_win = [[0] * PLAYERS for _ in strategies]
 
-for r in range(RUNS):
+for _ in range(RUNS):
     for s_i, s in enumerate(strategies):
         c_result, p_result, c_cards = playGame(croupier, g2_players)
         for res_i, res in enumerate(p_result):

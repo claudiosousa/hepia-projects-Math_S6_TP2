@@ -13,7 +13,7 @@ class PlayerStopAt:
 
     def should_continue(self, cards, croupier_cards, others_cards):
         points = get_card_points(cards)
-        return points < self.stop_at and points >=0 # points < 0 => over 21
+        return points < self.stop_at
 
     def __str__(self):
         return PlayerStopAt.__name__ + "(" + str(self.stop_at) + ")"
