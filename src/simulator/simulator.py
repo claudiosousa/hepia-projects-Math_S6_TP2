@@ -24,7 +24,7 @@ def playGame(croupier, players):
     # play the game
     for i, p in enumerate(players):
         player_cards = players_cards[i]
-        others_cards = [cards for cards in enumerate(players_cards) if cards is not player_cards]
+        others_cards = [cards for cards in players_cards if cards is not player_cards]
         while get_card_points(player_cards)>=0 and p.should_continue(player_cards, croupier_cards, others_cards):
             player_cards.append(deck.pop())
 
