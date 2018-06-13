@@ -29,12 +29,11 @@ for _ in range(RUNS):
 pprint(g1_sum_win)
 
 # % win for all players with 7 in the game
-g2_players = [s for _ in range(PLAYERS)]
 g2_sum_win = [[0] * PLAYERS for _ in strategies]
 
 for _ in range(RUNS):
     for s_i, s in enumerate(strategies):
-        c_result, p_result, c_cards = playGame(croupier, g2_players)
+        c_result, p_result, c_cards = playGame(croupier, [s for _ in range(PLAYERS)])
         for res_i, res in enumerate(p_result):
             g2_sum_win[s_i][res_i] += p_result[res_i]
 
