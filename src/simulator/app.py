@@ -41,11 +41,10 @@ for _ in range(RUNS):
 pprint(g2_sum_win)
 
 # % win for different strategies of stopAt
-g3_strategies = [PlayerStopAt(i) for i in range(15, 20)]
-g3_sum_win = [[0] * 10 for _ in g3_strategies]
+g3_sum_win = [[0] * 10 for _ in strategies]
 
-for r in range(RUNS):
-    for s_i, s in enumerate(g3_strategies):
+for _ in range(RUNS):
+    for s_i, s in enumerate(strategies):
         c_result, p_result, c_cards = playGame(croupier, [s])
         g3_sum_win[s_i][c_cards[0]-2] += p_result[0]
 
@@ -89,7 +88,7 @@ plt.xticks(range(len(strategies)), [s for s in strategies])
 # Third graph on % win of different strategies of StopAt
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-for s_i, s in enumerate(g3_strategies):
+for s_i, s in enumerate(strategies):
     ax.bar3d(s_i, range(2, 12), [0] * len(g3_sum_win[s_i]), 1, 1, g3_sum_win[s_i])
 ax.set_zlim3d(0,1)
 ax.set_title("Player win rate according to first initial card of the croupier")
@@ -97,6 +96,6 @@ ax.set_xlabel("Strategies")
 ax.set_ylabel("First initial card of croupier")
 ax.set_zlabel("Win rate")
 plt.sca(ax)
-plt.xticks(range(len(g3_strategies)), [s for s in g3_strategies])
+plt.xticks(range(len(strategies)), [s for s in strategies])
 
 plt.show()
