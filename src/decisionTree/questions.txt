@@ -1,0 +1,7 @@
+Arbre de probabilitées pour le croupier
+
+Meilleur choix selon carte croupier et nos 2 cartes ?
+
+Quand s'arreter ?
+
+Quel probabilitées de ganer en utilisant l'arbre vs s'arreter à 17?
