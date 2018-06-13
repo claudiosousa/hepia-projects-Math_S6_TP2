@@ -69,7 +69,7 @@ ax.set_xlabel("Strategies")
 ax.set_ylabel("Number of player")
 ax.set_zlabel("Win rate for last player")
 plt.sca(ax)
-plt.xticks(range(len(strategies)), [s for s in strategies])
+plt.xticks(range(len(strategies)), [s for s in strategies], rotation=90)
 
 # Second graph on % win of all player
 fig = plt.figure()
@@ -82,7 +82,7 @@ ax.set_xlabel("Strategies")
 ax.set_ylabel("Position of player")
 ax.set_zlabel("Win rate")
 plt.sca(ax)
-plt.xticks(range(len(strategies)), [s for s in strategies])
+plt.xticks(range(len(strategies)), [s for s in strategies], rotation=90)
 
 # Third graph on % win of different strategies of StopAt
 fig = plt.figure()
@@ -95,6 +95,6 @@ ax.set_xlabel("Strategies")
 ax.set_ylabel("First initial card of croupier")
 ax.set_zlabel("Win rate")
 plt.sca(ax)
-plt.xticks(range(len(strategies)), [s for s in strategies])
+plt.xticks(range(len(strategies)), [s for s in strategies], rotation=90)
 
 plt.show()
