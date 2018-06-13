@@ -9,13 +9,14 @@ from pprint import pprint
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from PlayerStopAt import PlayerStopAt
+from PlayerKOCount import PlayerKOCount
 from simulator import playGame
 
 RUNS = 1000
 PLAYERS = 7
 
 croupier = PlayerStopAt(17)
-strategies = [PlayerStopAt(15),PlayerStopAt(16), PlayerStopAt(17),PlayerStopAt(18),PlayerStopAt(19)]
+strategies = [PlayerStopAt(x) for x in range(15, 20)] + [PlayerKOCount(x) for x in range(12, 20)]
 
 # % win for the last player for a variable number of players
 g1_sum_win = [[0] * PLAYERS for _ in strategies]
