@@ -62,4 +62,16 @@ def calculate(cards, picked, odds):
 
 tree = calculate(cards, [], 1)
 import json
-print(json.dumps(tree))
+#print(json.dumps(tree))
+
+from graphviz import Digraph
+dot = Digraph()
+def addNode(node):
+    tree
+for n in tree['local']:
+dot.node('A', 'King Arthur')
+dot.node('B', 'Sir Bedevere the Wise')
+dot.node('L', 'Sir Lancelot the Brave')
+dot.edges(['AB', 'AL'])
+dot.edge('B', 'L', constraint='false')
+dot.render('test-output/round-table.gv', view=True)

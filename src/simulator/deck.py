@@ -12,7 +12,34 @@ def get_shuffled_deck():
     shuffle(cartes)
     return cartes
 
-def get_card_points(cards):
+def get_card_points(picked):
+    """
+    -1: exploded!
+    0-21: the points
+    22: 21 points AND it is ACE + figure
+    """
+    res = 0
+    ace = False
+    for i in picked:
+        if i == 11:
+            if ace:
+                i = 1
+            else:
+                ace = True
+        res += i
+
+    if res > 21 and ace:
+        res -= 10
+
+    if res > 21:
+        res = -1
+
+    if res == 21 and len(picked) == 2:  # blackjack
+        res = 22
+
+    return res
+
+def get_card_points_old(cards):
     """
     -1: exploded!
     0-21: the points

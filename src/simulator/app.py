@@ -11,13 +11,13 @@ from mpl_toolkits.mplot3d import Axes3D
 from PlayerStopAt import PlayerStopAt
 from PlayerKOCount import PlayerKOCount
 from simulator import playGame
-
-RUNS = 1000
+import numpy as np
+RUNS = 10000
 PLAYERS = 7
 
 croupier = PlayerStopAt(17)
-strategies = [PlayerStopAt(x) for x in range(15, 20)] + [PlayerKOCount(x) for x in range(12, 20)]
-
+strategies = [[PlayerStopAt(x)]+[PlayerKOCount(x)] for x in range(8, 22)]
+strategies = np.array(strategies).flatten()
 # % win for the last player for a variable number of players
 g1_sum_win = [[0] * PLAYERS for _ in strategies]
 
@@ -46,7 +46,7 @@ g3_sum_win = [[0] * 10 for _ in strategies]
 for _ in range(RUNS):
     for s_i, s in enumerate(strategies):
         c_result, p_result, c_cards = playGame(croupier, [s])
-        g3_sum_win[s_i][c_cards[0]-2] += p_result[0]
+        g3_sum_win[s_i][c_cards[0] - 2] += p_result[0]
 
 pprint(g3_sum_win)
 
@@ -63,8 +63,8 @@ pprint(g3_sum_win)
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for s_i, s in enumerate(strategies):
-    ax.bar3d(s_i, range(1, PLAYERS+1), [0] * len(g1_sum_win[s_i]), 1, 1, g1_sum_win[s_i])
-ax.set_zlim3d(0,1)
+    ax.bar3d(s_i, range(1, PLAYERS + 1), [0] * len(g1_sum_win[s_i]), 1, 1, g1_sum_win[s_i])
+# ax.set_zlim3d(0, 1)
 ax.set_title("Win rate of the last player for different number of player")
 ax.set_xlabel("Strategies")
 ax.set_ylabel("Number of player")
@@ -76,8 +76,8 @@ plt.xticks(range(len(strategies)), [s for s in strategies], rotation=90)
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for s_i, s in enumerate(strategies):
-    ax.bar3d(s_i, range(1, PLAYERS+1), [0] * len(g2_sum_win[s_i]), 1, 1, g2_sum_win[s_i])
-ax.set_zlim3d(0,1)
+    ax.bar3d(s_i, range(1, PLAYERS + 1), [0] * len(g2_sum_win[s_i]), 1, 1, g2_sum_win[s_i])
+# ax.set_zlim3d(0, 1)
 ax.set_title("Players win rate per position in games with 7 players")
 ax.set_xlabel("Strategies")
 ax.set_ylabel("Position of player")
@@ -90,7 +90,7 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 for s_i, s in enumerate(strategies):
     ax.bar3d(s_i, range(2, 12), [0] * len(g3_sum_win[s_i]), 1, 1, g3_sum_win[s_i])
-ax.set_zlim3d(0,1)
+# ax.set_zlim3d(0, 1)
 ax.set_title("Player win rate according to first initial card of the croupier")
 ax.set_xlabel("Strategies")
 ax.set_ylabel("First initial card of croupier")
