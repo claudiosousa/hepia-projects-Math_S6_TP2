@@ -1,0 +1,43 @@
+categorisation jeux
+
+strategy random
+    limit (data / exp)
+
+graph general
+    scale
+    numbers
+    grill
+    runs number in title
+
+G1
+    Area chart
+    order:
+        win croupier dies
+        win croupier lose
+        draw
+        lose croupier win
+        lose dies
+    StopAt 11-21
+    1 player
+    Color near for each Win/Draw/Lose
+
+G2
+    compare stop at and count
+    replace
+    StopAt
+    1'000'000 runs
+    Line per strat type
+        x: stop at value
+    1 player
+
+G3
+    best strat number 16
+    line per strat
+    x: init card croupier
+    1 player
+
+G4
+    Strat 16
+    -- varier player number (take last)
+    player 7 and compare position
+    2d line
