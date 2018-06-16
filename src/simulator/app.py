@@ -31,8 +31,16 @@ g1_sum_win = [[0] * WINRATE_TYPE_NB for _ in g1_strategies]
 
 for _ in range(g1_runs):
     for s_i, s in enumerate(g1_strategies):
-        c_result, p_result, c_cards = playGame(CROUPIER, [s])
-        g1_sum_win[s_i][0] += p_result[0]
+        c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
+        res = p_result[0]
+        died = p_died[0]
+
+        if res > 0: # win
+            g1_sum_win[s_i][0 if died == 0 else 1] += 1
+        elif res < 0: # lose
+            g1_sum_win[s_i][3 if died == 0 else 4] += 1
+        else: # draw
+            g1_sum_win[s_i][2] += 1
 
 # Data of graph 2
 g2_runs = RUNS
@@ -42,7 +50,7 @@ g2_sum_win = [[0] * len(s) for s in g2_strategies]
 for _ in range(g2_runs):
     for st_i, st in enumerate(g2_strategies):
         for s_i, s in enumerate(st):
-            c_result, p_result, c_cards = playGame(CROUPIER, [s])
+            c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
             g2_sum_win[st_i][s_i] += p_result[0]
 
 # Data of graph 3
@@ -52,7 +60,7 @@ g3_sum_win = [[0] * CARDS_TYPE_NB for _ in g3_strategies]
 
 for _ in range(g3_runs):
     for s_i, s in enumerate(g3_strategies):
-        c_result, p_result, c_cards = playGame(CROUPIER, [s])
+        c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
         g3_sum_win[s_i][c_cards[0] - 2] += p_result[0]
 
 # Data of graph 4
@@ -62,14 +70,12 @@ g4_sum_win = [[0] * PLAYERS_NB for _ in g3_strategies]
 
 for _ in range(g4_runs):
     for s_i, s in enumerate(g3_strategies):
-        c_result, p_result, c_cards = playGame(CROUPIER, [s] * PLAYERS_NB)
+        c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s] * PLAYERS_NB)
         for res_i, res in enumerate(p_result):
             g4_sum_win[s_i][res_i] += res
 
-print()
-
 # Normalise data
-g1_sum_win = [[(v + g1_runs) / (g1_runs * 2) for v in w] for w in g1_sum_win]
+g1_sum_win = [[v / g1_runs for v in w] for w in g1_sum_win]
 g2_sum_win = [[(v + g2_runs) / (g2_runs * 2) for v in w] for w in g2_sum_win]
 g3_sum_win = [[(v + g3_runs) / (g3_runs * 2) for v in w] for w in g3_sum_win]
 g4_sum_win = [[(v + g4_runs) / (g4_runs * 2) for v in w] for w in g4_sum_win]
@@ -77,12 +83,13 @@ g4_sum_win = [[(v + g4_runs) / (g4_runs * 2) for v in w] for w in g4_sum_win]
 # Graph 1:
 fig = plt.figure()
 ax = fig.add_subplot(111)
-
+ax.stackplot(STOP_AT_VALUES, list(map(list, zip(*g1_sum_win))))
 ax.grid()
-ax.set_title("Area for each rate per StopAt values for different strategies in " + str(g1_runs) + " runs")
+ax.set_title("Area for each win/draw/lose rate per StopAt values in " + str(g1_runs) + " runs")
 ax.set_xlabel("StopAt values")
-ax.set_ylabel("Win rate")
-ax.legend()
+ax.set_ylabel("Win/Draw/Lose rate")
+ax.margins(0, 0)
+ax.legend(["Win, croupier alive", "Win, croupier died", "Draw", "Lose, croupier alive", "Lose, croupier died"])
 
 # Graph 2:
 fig = plt.figure()
