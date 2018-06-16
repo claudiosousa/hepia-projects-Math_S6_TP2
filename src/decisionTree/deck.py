@@ -15,4 +15,6 @@ def calc_points(picked):
         res += i
     if res > 21 and ace:
         res -= 10
+    if res > 21:
+        res = -1
     return res

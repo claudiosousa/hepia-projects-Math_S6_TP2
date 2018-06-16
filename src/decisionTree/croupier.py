@@ -1,13 +1,16 @@
 from collections import defaultdict
 from graphviz import Digraph
+from pprint import pprint
 
 from deck import get_cards, calc_points
 
 def calculate_croupier_odds():
-    stop_at = 16
+    hit_at = 16
+
     def calculate(cards, picked, odds):
 
         res = {}
+        res["sum"] = calc_points(picked)
         res["odds"] = odds
         res["total"] = defaultdict(int)
         res["local"] = defaultdict(int)
@@ -19,16 +22,13 @@ def calculate_croupier_odds():
                 del newcards[card]
 
             card_count = tempcards[card]
-            # del tempcards[card]
 
             newpicked = picked + [card]
             points = calc_points(newpicked)
 
             local_odds = card_count / (52 - len(picked))
 
-            if points > stop_at:
-                if points > 21:
-                    points = 0
+            if points == -1 or points > hit_at:
                 res["total"][points] += local_odds * odds
                 res['local'][points] += local_odds
             else:
@@ -46,9 +46,10 @@ def calculate_croupier_odds():
     return calculate(get_cards(), [], 1)
 
 
-def build_graph(croupier_odds):
+def build_croupier_graph(croupier_odds):
     dot = Digraph(engine="circo", format="pdf", body=['mindist=0.2', 'ratio=auto'])
     #dot = Digraph(engine="twopi", format="pdf", body=['ranksep=3', 'ratio=auto'])
+
     def addNode(node, name, label, level):
         items = list(node['local'].items())
         items.sort()
@@ -65,7 +66,6 @@ def build_graph(croupier_odds):
                 child_name = f'{name}_{card}'
                 addNode(child, child_name, f'Card: {card}', level + 1)
                 dot.edge(name, child_name, f'{child["odds"]:>2.1%}')
-
 
     addNode(croupier_odds, '0', 'Initial state', 0)
     return dot
