@@ -1,0 +1,11 @@
+Jeu à mouvements (coups) séquentiels
+
+Jeu à partie itératifs
+
+Jeu à somme nulle
+
+Jeu avec information partielle
+
+Jeu aléatoire
+
+Jeu compétitif (ou conflictuel)
