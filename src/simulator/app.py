@@ -81,9 +81,15 @@ g3_sum_win = [[(v + g3_runs) / (g3_runs * 2) for v in w] for w in g3_sum_win]
 g4_sum_win = [[(v + g4_runs) / (g4_runs * 2) for v in w] for w in g4_sum_win]
 
 # Graph 1:
+g1_colors =  [(1.0, 1.0, 0.0), (1.0, 0.8, 0.0), (0.6, 0.6, 0.6), (0.0, 1.0, 1.0), (0.0, 0.8, 1.0)]
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.stackplot(STOP_AT_VALUES, list(map(list, zip(*g1_sum_win))))
+ax.stackplot(STOP_AT_VALUES,  list(map(list, zip(*g1_sum_win))), colors=g1_colors)
+for x, w in zip(STOP_AT_VALUES, g1_sum_win):
+    y_sum = 0
+    for y in w:
+        ax.text(x, y_sum + (y / 2), f'{y}', horizontalalignment="center", verticalalignment="center")
+        y_sum += y
 ax.grid()
 ax.set_title("Area for each win/draw/lose rate per StopAt values in " + str(g1_runs) + " runs")
 ax.set_xlabel("StopAt values")
