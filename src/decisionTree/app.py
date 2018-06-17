@@ -4,7 +4,6 @@ import json
 
 from croupier import calculate_croupier_odds, build_croupier_graph
 from player import player_hand_value_odds, calculate_player_odds, str_player_hand_value_odds
-from interactive_player import draw_interactive_odds
 
 croupier_odds = calculate_croupier_odds()
 # print(json.dumps(croupier_odds))
@@ -20,7 +19,6 @@ hand_odds = player_hand_value_odds(croupier_odds)
 player_odds = calculate_player_odds(hand_odds)
 #print(json.dumps(player_odds))
 
-draw_interactive_odds(hand_odds)
 exit()
 
 
