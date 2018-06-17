@@ -1,0 +1,48 @@
+digraph {
+mindist=0.2
+ratio=auto
+	0 [label="Card: Initial state
+Sum: <=11
+Odds: 23/ 0/77
+Loose_next: 77%" fillcolor=limegreen style=filled]
+	"0_2" [label="Card: 2
+Sum: 2
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_2" [label="7.7%"]
+	"0_3" [label="Card: 3
+Sum: 3
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_3" [label="7.7%"]
+	"0_4" [label="Card: 4
+Sum: 4
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_4" [label="7.7%"]
+	"0_5" [label="Card: 5
+Sum: 5
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_5" [label="7.7%"]
+	"0_6" [label="Card: 6
+Sum: 6
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_6" [label="7.7%"]
+	"0_7" [label="Card: 7
+Sum: 7
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_7" [label="7.7%"]
+	"0_8" [label="Card: 8
+Sum: 8
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_8" [label="7.7%"]
+	"0_9" [label="Card: 9
+Sum: 9
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_9" [label="7.7%"]
+	"0_10" [label="Card: 10
+Sum: 10
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_10" [label="30.8%"]
+	"0_11" [label="Card: 11
+Sum: 11
+Odds: 23/ 0/77" fillcolor=gray85 style=filled]
+	0 -> "0_11" [label="7.7%"]
+}

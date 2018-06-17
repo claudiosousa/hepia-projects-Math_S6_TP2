@@ -1,171 +1,253 @@
 digraph {
 mindist=0.2
 ratio=auto
-	0 [label="Card: Initial state
-Sum: <=11
-Odds: 23/ 0/77
-Loose_next: 77%"]
+	0 [label="Card: Croupier 6
+Sum: 0
+Win: 42
+Draw:  0
+Loose: 58
+Next_loose: 58%" fillcolor=white style=filled]
 	"0_2" [label="Card: 2
 Sum: 2
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_2" [label="7.7%"]
 	"0_3" [label="Card: 3
 Sum: 3
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_3" [label="7.7%"]
 	"0_4" [label="Card: 4
 Sum: 4
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_4" [label="7.7%"]
 	"0_5" [label="Card: 5
 Sum: 5
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_5" [label="7.7%"]
 	"0_6" [label="Card: 6
 Sum: 6
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_6" [label="7.7%"]
 	"0_7" [label="Card: 7
 Sum: 7
-Odds: 23/ 0/77
-Loose_next: 71%"]
+Win: 42
+Draw:  0
+Loose: 58
+Next_loose: 51%" fillcolor=white style=filled]
 	"0_7_2" [label="Card: 2
 Sum: 9
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_2" [label="7.8%"]
 	"0_7_3" [label="Card: 3
 Sum: 10
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_3" [label="7.8%"]
 	"0_7_4" [label="Card: 4
 Sum: 11
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_4" [label="7.8%"]
 	"0_7_5" [label="Card: 5
 Sum: 12
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58
+Next_loose: 57%" fillcolor=white style=filled]
+	"0_7_5_2" [label="Card: 2
+Sum: 14
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_2" [label="8.0%"]
+	"0_7_5_3" [label="Card: 3
+Sum: 15
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_3" [label="8.0%"]
+	"0_7_5_4" [label="Card: 4
+Sum: 16
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_4" [label="8.0%"]
+	"0_7_5_5" [label="Card: 5
+Sum: 17
+Win: 42
+Draw: 17
+Loose: 41" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_5" [label="6.0%"]
+	"0_7_5_6" [label="Card: 6
+Sum: 18
+Win: 59
+Draw: 11
+Loose: 31" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_6" [label="8.0%"]
+	"0_7_5_7" [label="Card: 7
+Sum: 19
+Win: 69
+Draw: 11
+Loose: 20" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_7" [label="6.0%"]
+	"0_7_5_8" [label="Card: 8
+Sum: 20
+Win: 80
+Draw: 10
+Loose: 10" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_8" [label="8.0%"]
+	"0_7_5_9" [label="Card: 9
+Sum: 21
+Win: 90
+Draw: 10
+Loose:  0" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_9" [label="8.0%"]
+	"0_7_5_10" [label="Card: 10
+Sum: -1
+Win:  0
+Draw:  0
+Loose: 100" fillcolor=white style=filled]
+	"0_7_5" -> "0_7_5_10" [label="32.0%"]
+	"0_7_5_11" [label="Card: 11
+Sum: 13
+Win: 42
+Draw:  0
+Loose: 58
+Next_loose: 61%" fillcolor=brown1 style=filled]
+	"0_7_5_11_2" [label="Card: 2
+Sum: 15
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_2" [label="8.2%"]
+	"0_7_5_11_3" [label="Card: 3
+Sum: 16
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_3" [label="8.2%"]
+	"0_7_5_11_4" [label="Card: 4
+Sum: 17
+Win: 42
+Draw: 17
+Loose: 41" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_4" [label="8.2%"]
+	"0_7_5_11_5" [label="Card: 5
+Sum: 18
+Win: 59
+Draw: 11
+Loose: 31" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_5" [label="6.1%"]
+	"0_7_5_11_6" [label="Card: 6
+Sum: 19
+Win: 69
+Draw: 11
+Loose: 20" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_6" [label="8.2%"]
+	"0_7_5_11_7" [label="Card: 7
+Sum: 20
+Win: 80
+Draw: 10
+Loose: 10" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_7" [label="6.1%"]
+	"0_7_5_11_8" [label="Card: 8
+Sum: 21
+Win: 90
+Draw: 10
+Loose:  0" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_8" [label="8.2%"]
+	"0_7_5_11_9" [label="Card: 9
+Sum: -1
+Win:  0
+Draw:  0
+Loose: 100" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_9" [label="8.2%"]
+	"0_7_5_11_10" [label="Card: 10
+Sum: -1
+Win:  0
+Draw:  0
+Loose: 100" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_10" [label="32.7%"]
+	"0_7_5_11_11" [label="Card: 11
+Sum: 14
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=gray85 style=filled]
+	"0_7_5_11" -> "0_7_5_11_11" [label="6.1%"]
+	"0_7_5" -> "0_7_5_11" [label="8.0%"]
 	"0_7" -> "0_7_5" [label="7.8%"]
 	"0_7_6" [label="Card: 6
 Sum: 13
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_6" [label="7.8%"]
 	"0_7_7" [label="Card: 7
 Sum: 14
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_7" [label="5.9%"]
 	"0_7_8" [label="Card: 8
 Sum: 15
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_8" [label="7.8%"]
 	"0_7_9" [label="Card: 9
 Sum: 16
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	"0_7" -> "0_7_9" [label="7.8%"]
 	"0_7_10" [label="Card: 10
 Sum: 17
-Odds: 23/12/64
-Loose_next: 74%"]
-	"0_7_10_2" [label="Card: 2
-Sum: 19
-Odds: 46/36/18"]
-	"0_7_10" -> "0_7_10_2" [label="8.0%"]
-	"0_7_10_3" [label="Card: 3
-Sum: 20
-Odds: 82/12/ 6"]
-	"0_7_10" -> "0_7_10_3" [label="8.0%"]
-	"0_7_10_4" [label="Card: 4
-Sum: 21
-Odds: 94/ 6/-0"]
-	"0_7_10" -> "0_7_10_4" [label="8.0%"]
-	"0_7_10_5" [label="Card: 5
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10" -> "0_7_10_5" [label="8.0%"]
-	"0_7_10_6" [label="Card: 6
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10" -> "0_7_10_6" [label="8.0%"]
-	"0_7_10_7" [label="Card: 7
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10" -> "0_7_10_7" [label="6.0%"]
-	"0_7_10_8" [label="Card: 8
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10" -> "0_7_10_8" [label="8.0%"]
-	"0_7_10_9" [label="Card: 9
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10" -> "0_7_10_9" [label="8.0%"]
-	"0_7_10_10" [label="Card: 10
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10" -> "0_7_10_10" [label="30.0%"]
-	"0_7_10_11" [label="Card: 11
-Sum: 18
-Odds: 36/10/54
-Loose_next: 79%"]
-	"0_7_10_11_2" [label="Card: 2
-Sum: 20
-Odds: 82/12/ 6"]
-	"0_7_10_11" -> "0_7_10_11_2" [label="8.2%"]
-	"0_7_10_11_3" [label="Card: 3
-Sum: 21
-Odds: 94/ 6/-0"]
-	"0_7_10_11" -> "0_7_10_11_3" [label="8.2%"]
-	"0_7_10_11_4" [label="Card: 4
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_4" [label="8.2%"]
-	"0_7_10_11_5" [label="Card: 5
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_5" [label="8.2%"]
-	"0_7_10_11_6" [label="Card: 6
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_6" [label="8.2%"]
-	"0_7_10_11_7" [label="Card: 7
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_7" [label="6.1%"]
-	"0_7_10_11_8" [label="Card: 8
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_8" [label="8.2%"]
-	"0_7_10_11_9" [label="Card: 9
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_9" [label="8.2%"]
-	"0_7_10_11_10" [label="Card: 10
-Sum: -1
-Odds:  0/ 0/100"]
-	"0_7_10_11" -> "0_7_10_11_10" [label="30.6%"]
-	"0_7_10_11_11" [label="Card: 11
-Sum: 19
-Odds: 46/36/18"]
-	"0_7_10_11" -> "0_7_10_11_11" [label="6.1%"]
-	"0_7_10" -> "0_7_10_11" [label="8.0%"]
+Win: 42
+Draw: 17
+Loose: 41" fillcolor=white style=filled]
 	"0_7" -> "0_7_10" [label="31.4%"]
 	"0_7_11" [label="Card: 11
 Sum: 18
-Odds: 36/10/54"]
+Win: 59
+Draw: 11
+Loose: 31" fillcolor=white style=filled]
 	"0_7" -> "0_7_11" [label="7.8%"]
 	0 -> "0_7" [label="7.7%"]
 	"0_8" [label="Card: 8
 Sum: 8
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_8" [label="7.7%"]
 	"0_9" [label="Card: 9
 Sum: 9
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_9" [label="7.7%"]
 	"0_10" [label="Card: 10
 Sum: 10
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_10" [label="30.8%"]
 	"0_11" [label="Card: 11
 Sum: 11
-Odds: 23/ 0/77"]
+Win: 42
+Draw:  0
+Loose: 58" fillcolor=white style=filled]
 	0 -> "0_11" [label="7.7%"]
 }
