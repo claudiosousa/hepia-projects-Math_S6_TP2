@@ -12,7 +12,7 @@ from PlayerKOCount import PlayerKOCount
 from simulator import playGame
 import numpy as np
 
-RUNS = 100
+RUNS = 100000
 PLAYERS_NB = 7
 PLAYERS = list(range(1, PLAYERS_NB + 1))
 WINRATE_TYPE_NB = 5
