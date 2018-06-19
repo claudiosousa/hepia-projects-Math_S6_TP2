@@ -63,22 +63,10 @@ for _ in range(g3_runs):
             c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
             g3_sum_win[st_i][s_i] += p_result[0] if p_result[0] != 0 else 1
 
-# Data of graph 4
-g4_runs = RUNS
-g4_strategies = [PlayerStopAt(STOP_AT_BEST), PlayerKOCount(STOP_AT_BEST)]
-g4_sum_win = [[0] * PLAYERS_NB for _ in g4_strategies]
-
-for _ in range(g4_runs):
-    for s_i, s in enumerate(g4_strategies):
-        c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s] * PLAYERS_NB)
-        for res_i, res in enumerate(p_result):
-            g4_sum_win[s_i][res_i] += res
-
 # Normalise data
 g1_sum_win = [[v / g1_runs for v in w] for w in g1_sum_win]
 g2_sum_win = [[(v + g2_runs) / (g2_runs * 2) for v in w] for w in g2_sum_win]
 g3_sum_win = [[(v + g3_runs) / (g3_runs * 2) for v in w] for w in g3_sum_win]
-g4_sum_win = [[(v + g4_runs) / (g4_runs * 2) for v in w] for w in g4_sum_win]
 
 # Graph 1:
 g1_colors =  [(1.0, 1.0, 0.0), (1.0, 0.8, 0.0), (0.6, 0.6, 0.6), (0.0, 1.0, 1.0), (0.0, 0.8, 1.0)]
@@ -120,19 +108,6 @@ for s_i, w in enumerate(g3_sum_win):
 ax.grid()
 ax.set_title("Win/Draw rate per StopAt values for different strategies in " + str(g3_runs) + " runs")
 ax.set_xlabel("StopAt values")
-ax.set_ylabel("Win rate")
-ax.legend()
-
-# Graph 4:
-fig = plt.figure()
-ax = fig.add_subplot(111)
-for s_i, w in enumerate(g4_sum_win):
-    ax.plot(PLAYERS, w, '-', linewidth=2, label=g4_strategies[s_i])
-    for x, y in zip(PLAYERS, w):
-        ax.text(x - 0.25 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
-ax.grid()
-ax.set_title("Win rate per player position for best strategies in " + str(g4_runs) + " runs")
-ax.set_xlabel("Player position")
 ax.set_ylabel("Win rate")
 ax.legend()
 
