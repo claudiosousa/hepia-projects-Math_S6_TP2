@@ -7,13 +7,12 @@
 
 from pprint import pprint
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from PlayerStopAt import PlayerStopAt
 from PlayerKOCount import PlayerKOCount
 from simulator import playGame
 import numpy as np
 
-RUNS = 100
+RUNS = 100000
 PLAYERS_NB = 7
 PLAYERS = list(range(1, PLAYERS_NB + 1))
 WINRATE_TYPE_NB = 5
@@ -85,7 +84,7 @@ g4_sum_win = [[(v + g4_runs) / (g4_runs * 2) for v in w] for w in g4_sum_win]
 g1_colors =  [(1.0, 1.0, 0.0), (1.0, 0.8, 0.0), (0.6, 0.6, 0.6), (0.0, 1.0, 1.0), (0.0, 0.8, 1.0)]
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.stackplot(STOP_AT_VALUES,  list(map(list, zip(*g1_sum_win))), colors=g1_colors)
+ax.stackplot(STOP_AT_VALUES, list(map(list, zip(*g1_sum_win))), colors=g1_colors)
 for x, w in zip(STOP_AT_VALUES, g1_sum_win):
     y_sum = 0
     for y in w:
