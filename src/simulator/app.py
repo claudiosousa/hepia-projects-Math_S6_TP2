@@ -12,7 +12,7 @@ from PlayerKOCount import PlayerKOCount
 from simulator import playGame
 import numpy as np
 
-RUNS = 100000
+RUNS = 100
 PLAYERS_NB = 7
 PLAYERS = list(range(1, PLAYERS_NB + 1))
 WINRATE_TYPE_NB = 5
@@ -44,32 +44,32 @@ for _ in range(g1_runs):
 
 # Data of graph 2
 g2_runs = RUNS
-g2_strategies = [[PlayerStopAt(x) for x in STOP_AT_VALUES], [PlayerKOCount(x) for x in STOP_AT_VALUES]]
-g2_sum_win = [[0] * len(s) for s in g2_strategies]
+g2_strategies = [PlayerStopAt(STOP_AT_BEST), PlayerKOCount(STOP_AT_BEST)]
+g2_sum_win = [[0] * CARDS_TYPE_NB for _ in g2_strategies]
 
 for _ in range(g2_runs):
-    for st_i, st in enumerate(g2_strategies):
-        for s_i, s in enumerate(st):
-            c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
-            g2_sum_win[st_i][s_i] += p_result[0] if p_result[0] != 0 else 1
+    for s_i, s in enumerate(g2_strategies):
+        c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
+        g2_sum_win[s_i][c_cards[0] - 2] += p_result[0] if p_result[0] != 0 else 1
 
 # Data of graph 3
 g3_runs = RUNS
-g3_strategies = [PlayerStopAt(STOP_AT_BEST), PlayerKOCount(STOP_AT_BEST)]
-g3_sum_win = [[0] * CARDS_TYPE_NB for _ in g3_strategies]
+g3_strategies = [[PlayerStopAt(x) for x in STOP_AT_VALUES], [PlayerKOCount(x) for x in STOP_AT_VALUES]]
+g3_sum_win = [[0] * len(s) for s in g3_strategies]
 
 for _ in range(g3_runs):
-    for s_i, s in enumerate(g3_strategies):
-        c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
-        g3_sum_win[s_i][c_cards[0] - 2] += p_result[0] if p_result[0] != 0 else 1
+    for st_i, st in enumerate(g3_strategies):
+        for s_i, s in enumerate(st):
+            c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
+            g3_sum_win[st_i][s_i] += p_result[0] if p_result[0] != 0 else 1
 
 # Data of graph 4
 g4_runs = RUNS
 g4_strategies = [PlayerStopAt(STOP_AT_BEST), PlayerKOCount(STOP_AT_BEST)]
-g4_sum_win = [[0] * PLAYERS_NB for _ in g3_strategies]
+g4_sum_win = [[0] * PLAYERS_NB for _ in g4_strategies]
 
 for _ in range(g4_runs):
-    for s_i, s in enumerate(g3_strategies):
+    for s_i, s in enumerate(g4_strategies):
         c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s] * PLAYERS_NB)
         for res_i, res in enumerate(p_result):
             g4_sum_win[s_i][res_i] += res
@@ -101,12 +101,12 @@ ax.legend(["Win, croupier alive", "Win, croupier died", "Draw", "Lose, croupier 
 fig = plt.figure()
 ax = fig.add_subplot(111)
 for s_i, w in enumerate(g2_sum_win):
-    ax.plot(STOP_AT_VALUES, w, '-', linewidth=2, label=STRATEGIES[s_i].__name__)
-    for x, y in zip(STOP_AT_VALUES, w):
+    ax.plot(CARDS, w, '-', linewidth=2, label=g2_strategies[s_i])
+    for x, y in zip(CARDS, w):
         ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
-ax.set_title("Win/Draw rate per StopAt values for different strategies in " + str(g2_runs) + " runs")
-ax.set_xlabel("StopAt values")
+ax.set_title("Win/Draw rate per initial card of the croupier for best strategies in " + str(g2_runs) + " runs")
+ax.set_xlabel("Croupier's initial card")
 ax.set_ylabel("Win rate")
 ax.legend()
 
@@ -114,12 +114,12 @@ ax.legend()
 fig = plt.figure()
 ax = fig.add_subplot(111)
 for s_i, w in enumerate(g3_sum_win):
-    ax.plot(CARDS, w, '-', linewidth=2, label=g3_strategies[s_i])
-    for x, y in zip(CARDS, w):
+    ax.plot(STOP_AT_VALUES, w, '-', linewidth=2, label=STRATEGIES[s_i].__name__)
+    for x, y in zip(STOP_AT_VALUES, w):
         ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
-ax.set_title("Win/Draw rate per initial card of the croupier for best strategies in " + str(g3_runs) + " runs")
-ax.set_xlabel("Croupier's initial card")
+ax.set_title("Win/Draw rate per StopAt values for different strategies in " + str(g3_runs) + " runs")
+ax.set_xlabel("StopAt values")
 ax.set_ylabel("Win rate")
 ax.legend()
 
