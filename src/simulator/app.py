@@ -44,7 +44,7 @@ for _ in range(g1_runs):
 
 # Data of graph 2
 g2_runs = RUNS
-g2_strategies = [PlayerStopAt(STOP_AT_BEST), PlayerKOCount(STOP_AT_BEST)]
+g2_strategies = [PlayerStopAt(STOP_AT_BEST)]
 g2_sum_win = [[0] * CARDS_TYPE_NB for _ in g2_strategies]
 
 for _ in range(g2_runs):
