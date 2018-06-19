@@ -50,7 +50,7 @@ g2_sum_win = [[0] * CARDS_TYPE_NB for _ in g2_strategies]
 for _ in range(g2_runs):
     for s_i, s in enumerate(g2_strategies):
         c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
-        g2_sum_win[s_i][c_cards[0] - 2] += p_result[0] if p_result[0] != 0 else 1
+        g2_sum_win[s_i][c_cards[0] - 2] += p_result[0]
 
 # Data of graph 3
 g3_runs = RUNS
