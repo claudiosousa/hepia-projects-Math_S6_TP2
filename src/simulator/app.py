@@ -52,7 +52,7 @@ for _ in range(g2_runs):
     for st_i, st in enumerate(g2_strategies):
         for s_i, s in enumerate(st):
             c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
-            g2_sum_win[st_i][s_i] += p_result[0]
+            g2_sum_win[st_i][s_i] += p_result[0] if p_result[0] != 0 else 1
 
 # Data of graph 3
 g3_runs = RUNS
@@ -62,7 +62,7 @@ g3_sum_win = [[0] * CARDS_TYPE_NB for _ in g3_strategies]
 for _ in range(g3_runs):
     for s_i, s in enumerate(g3_strategies):
         c_result, p_result, p_died, c_cards = playGame(CROUPIER, [s])
-        g3_sum_win[s_i][c_cards[0] - 2] += p_result[0]
+        g3_sum_win[s_i][c_cards[0] - 2] += p_result[0] if p_result[0] != 0 else 1
 
 # Data of graph 4
 g4_runs = RUNS
@@ -106,7 +106,7 @@ for s_i, w in enumerate(g2_sum_win):
     for x, y in zip(STOP_AT_VALUES, w):
         ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
-ax.set_title("Win rate per StopAt values for different strategies in " + str(g2_runs) + " runs")
+ax.set_title("Win/Draw rate per StopAt values for different strategies in " + str(g2_runs) + " runs")
 ax.set_xlabel("StopAt values")
 ax.set_ylabel("Win rate")
 ax.legend()
@@ -119,7 +119,7 @@ for s_i, w in enumerate(g3_sum_win):
     for x, y in zip(CARDS, w):
         ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
-ax.set_title("Win rate per initial card of the croupier for best strategies in " + str(g3_runs) + " runs")
+ax.set_title("Win/Draw rate per initial card of the croupier for best strategies in " + str(g3_runs) + " runs")
 ax.set_xlabel("Croupier's initial card")
 ax.set_ylabel("Win rate")
 ax.legend()
