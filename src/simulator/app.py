@@ -23,6 +23,7 @@ CROUPIER = PlayerStopAt(17)
 STOP_AT_VALUES = list(range(11, 22))
 STOP_AT_BEST = 17
 STRATEGIES = [PlayerStopAt, PlayerKOCount]
+TEXTCOLORS = ["#175885", "#753A06"]
 
 # Data of graph 1
 g1_runs = RUNS
@@ -88,7 +89,7 @@ ax.stackplot(STOP_AT_VALUES,  list(map(list, zip(*g1_sum_win))), colors=g1_color
 for x, w in zip(STOP_AT_VALUES, g1_sum_win):
     y_sum = 0
     for y in w:
-        ax.text(x, y_sum + (y / 2), f'{y}', horizontalalignment="center", verticalalignment="center")
+        ax.text(x, y_sum + (y / 2), f'{y:.3f}', horizontalalignment="center", verticalalignment="center")
         y_sum += y
 ax.grid()
 ax.set_title("Area for each win/draw/lose rate per StopAt values in " + str(g1_runs) + " runs")
@@ -103,7 +104,7 @@ ax = fig.add_subplot(111)
 for s_i, w in enumerate(g2_sum_win):
     ax.plot(STOP_AT_VALUES, w, '-', linewidth=2, label=STRATEGIES[s_i].__name__)
     for x, y in zip(STOP_AT_VALUES, w):
-        ax.text(x, y, f'{y}')
+        ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
 ax.set_title("Win rate per StopAt values for different strategies in " + str(g2_runs) + " runs")
 ax.set_xlabel("StopAt values")
@@ -116,7 +117,7 @@ ax = fig.add_subplot(111)
 for s_i, w in enumerate(g3_sum_win):
     ax.plot(CARDS, w, '-', linewidth=2, label=g3_strategies[s_i])
     for x, y in zip(CARDS, w):
-        ax.text(x, y, f'{y}')
+        ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
 ax.set_title("Win rate per initial card of the croupier for best strategies in " + str(g3_runs) + " runs")
 ax.set_xlabel("Croupier's initial card")
@@ -129,7 +130,7 @@ ax = fig.add_subplot(111)
 for s_i, w in enumerate(g4_sum_win):
     ax.plot(PLAYERS, w, '-', linewidth=2, label=g4_strategies[s_i])
     for x, y in zip(PLAYERS, w):
-        ax.text(x, y, f'{y}')
+        ax.text(x - 0.25 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
 ax.set_title("Win rate per player position for best strategies in " + str(g4_runs) + " runs")
 ax.set_xlabel("Player position")
