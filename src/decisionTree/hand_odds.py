@@ -33,7 +33,7 @@ with open('hand_odds.csv', 'r') as csvfile:
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.stackplot(range(len(cards)), list(map(list, zip(*rates))), colors=colors)
-ax.plot(range(len(cards)), [range(len(points) + 1) for _ in range(len(cards))], '-', linewidth=1, c="black")
+ax.plot(range(len(cards)), [range(len(points) + 1) for _ in range(len(cards))], '-', linewidth=3, c="white")
 for x, w in zip(range(len(cards) + 1), rates):
     y_sum = 0
     for y in w:

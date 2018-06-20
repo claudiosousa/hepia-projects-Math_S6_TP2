@@ -82,8 +82,10 @@ ax.grid()
 ax.set_title("Area for each win/draw/lose rate per StopAt values in " + str(g1_runs) + " runs")
 ax.set_xlabel("StopAt values")
 ax.set_ylabel("Win/Draw/Lose rate")
-ax.margins(0, 0)
-ax.legend(["Win, croupier alive", "Win, croupier died", "Draw", "Lose, croupier alive", "Lose, croupier died"])
+ax.margins(0.025, 0)
+ax.legend(["Win, beat croupier", "Win, croupier died", "Draw", "Lose, beat by croupier", "Lose, croupier also died"])
+ax.set_xticks(STOP_AT_VALUES)
+ax.set_yticks([x / 10.0 for x in range(0, 11)])
 
 # Graph 2:
 fig = plt.figure()
@@ -93,7 +95,7 @@ for s_i, w in enumerate(g2_sum_win):
     for x, y in zip(CARDS, w):
         ax.text(x - 0.4 * s_i, y, f'{y:.3f}', color=TEXTCOLORS[s_i])
 ax.grid()
-ax.set_title("Win/Draw rate per initial card of the croupier for best strategies in " + str(g2_runs) + " runs")
+ax.set_title("Win rate per initial card of the croupier for best strategies in " + str(g2_runs) + " runs")
 ax.set_xlabel("Croupier's initial card")
 ax.set_ylabel("Win rate")
 ax.legend()
