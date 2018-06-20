@@ -22,9 +22,9 @@ def plot_tree(tree):
         outcome=node["outcome"]
         label += f'\nWin: {outcome["win"]*100:>2.0f}'
         label += f'\nDraw: {outcome["draw"]*100:>2.0f}'
-        label += f'\nLoose: {outcome["loose"]*100:>2.0f}'
+        label += f'\nLose: {outcome["loose"]*100:>2.0f}'
         if "next_mode_odds" in node:
-            label += f'\nNext_loose: {node["next_mode_odds"]:>2.0%}'
+            label += f'\nNext_lose: {node["next_mode_odds"]:>2.0%}'
 
         color='white'
         if "mode" in node:
